@@ -46,6 +46,7 @@ echo "#00 * * * * "$SH_PATH"MouseMove.sh" >> mycron
 crontab mycron
 rm mycron
 
+#AUTO_FILE=/etc/xdg/lxsession/LXDE-pi/autostart
 AUTO_FILE=~/.config/lxsession/LXDE-pi/autostart
 echo "@lxpanel --profile LXDE-pi" > $AUTO_FILE
 echo "@pcmanfm --desktop --profile LXDE-pi" >> $AUTO_FILE
