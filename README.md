@@ -8,7 +8,7 @@ This app allows users in Davis, Woodland, Brentwood, Sac, Madera to see:
 cd ~; 
 rm -Rf iqamah;
 git clone https://github.com/albararamli/iqamah.git; 
-cd ~/iqamah/sh/; sh ./install.sh; sudo sh ./install.sh; 
+cd ~/iqamah/sh/; sh ./install.sh; sudo sh ./install2.sh; 
 reboot;
 ```
 
