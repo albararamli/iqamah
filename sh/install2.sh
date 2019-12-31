@@ -27,8 +27,8 @@ chmod +x *.py
 ##crontab mycron
 ##rm mycron
 
-#AUTO_FILE=/etc/xdg/lxsession/LXDE-pi/autostart 
-AUTO_FILE=~/.config/lxsession/LXDE-pi/autostart # official Raspbian Buster with desktop and recommended software
+AUTO_FILE=/etc/xdg/lxsession/LXDE-pi/autostart # official Raspbian Buster with desktop and recommended software
+#AUTO_FILE=~/.config/lxsession/LXDE-pi/autostart 
 echo "@lxpanel --profile LXDE-pi" > $AUTO_FILE
 echo "@pcmanfm --desktop --profile LXDE-pi" >> $AUTO_FILE
 echo "@xscreensaver -no-splash" >> $AUTO_FILE
