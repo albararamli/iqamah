@@ -37,7 +37,7 @@ echo "00 03 * * * "$SH_PATH"iqamahTimeParser.sh" >> mycron
 echo "#Run screenTimeCheck.py Script Every 5 min" >> mycron
 echo "*/5 * * * * sudo python "$PY_PATH"screenTimeCheck.py" >> mycron
 echo "#Restart RPi Everyday at 2:15AM" >> mycron
-echo "15 02 * * * reboot" >> mycron
+echo "15 02 * * * /sbin/reboot" >> mycron
 echo "#Download Local HTML" >> mycron
 echo "15 03 * * * "$SH_PATH"local.sh" >> mycron
 echo "#Move Mouse Location" >> mycron
