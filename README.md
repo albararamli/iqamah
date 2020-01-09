@@ -11,15 +11,20 @@ git clone https://github.com/albararamli/iqamah.git;
 cd ~/iqamah/sh/; sh ./install.sh; sudo sh ./install2.sh; 
 reboot;
 ```
+# Install
+```
+sudo apt-get install chromium-browser unclutter lxde
+```
 
-# Enable VNC
+# Enable VNC 
+select Menu > Preferences > Raspberry Pi Configuration > Interfaces and make sure VNC is set to Enabled.
+Alternatively, run the command ```sudo raspi-config```, navigate to Advanced Options > VNC and select Yes.
+# In case it was not installed 
 ```
 sudo apt-get update 
 sudo apt-get install realvnc-vnc-server 
 sudo apt-get install realvnc-vnc-viewer
 ```
-select Menu > Preferences > Raspberry Pi Configuration > Interfaces and make sure VNC is set to Enabled.
-Alternatively, run the command ```sudo raspi-config```, navigate to Advanced Options > VNC and select Yes.
 
 # Rotate the Screen 90 Degrees
 ```
