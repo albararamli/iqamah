@@ -2,4 +2,4 @@ davis
 101
 monitor
 https://albara.ramli.net/iqamah/
-27
+32
