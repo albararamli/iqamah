@@ -11,6 +11,16 @@ git clone https://github.com/albararamli/iqamah.git;
 cd ~/iqamah/sh/; sh ./install.sh; sudo sh ./install2.sh; 
 reboot;
 ```
+
+# In case error
+```
+cd ~; 
+rm -Rf iqamah;
+git clone https://github.com/albararamli/iqamah.git; 
+cd ~/iqamah/sh/; sh ./install.sh; sh ./install2.sh old; 
+reboot;
+```
+
 # Install
 ```
 sudo apt-get install chromium-browser unclutter lxde
