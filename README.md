@@ -3,6 +3,25 @@ This app allows users in Davis, Woodland, Brentwood, Sac, Madera to see:
 - Athan and Iqamah table.
 - The current time remains for the next Iqamah.
 
+
+
+# Install
+```
+sudo apt-get update
+sudo apt-get install chromium-browser unclutter lxde
+sudo apt install xdotool
+```
+
+# Disable Screen Sleep on Raspberry Pi
+```
+sudo apt-get install xscreensaver
+```
+
+From xscreensaver click Settings, then at the top choose Disable Screen Sleep from the dropdown. 
+```
+sudo apt-get install lxsession-default-apps
+```
+
 # Install
 ```
 cd ~; 
@@ -21,11 +40,13 @@ cd ~/iqamah/sh/; sh ./install.sh; sh ./install2.sh old;
 reboot;
 ```
 
-# Install
+
+# Rotate the Screen 90 Degrees
 ```
-sudo apt-get install chromium-browser unclutter lxde
-sudo apt install xdotool
+sudo nano /boot/config.txt
+display_rotate=1
 ```
+
 
 # Enable VNC 
 select Menu > Preferences > Raspberry Pi Configuration > Interfaces and make sure VNC is set to Enabled.
@@ -35,23 +56,6 @@ Alternatively, run the command ```sudo raspi-config```, navigate to Advanced Opt
 sudo apt-get update 
 sudo apt-get install realvnc-vnc-server 
 sudo apt-get install realvnc-vnc-viewer
-```
-
-# Rotate the Screen 90 Degrees
-```
-sudo nano /boot/config.txt
-display_rotate=1
-```
-
-# Disable Screen Sleep on Raspberry Pi
-```
-sudo apt-get install xscreensaver
-```
-
-From xscreensaver click Settings, then at the top choose Disable Screen Sleep from the dropdown. 
-```
-sudo apt-get update
-sudo apt-get install lxsession-default-apps
 ```
 
 # Changing the brightness on the Raspberry Pi 7″ touchscreen
@@ -69,3 +73,5 @@ To turn ON
 ```
 sudo bash -c "echo 0 > /sys/class/backlight/rpi_backlight/bl_power"
 ```
+
+
