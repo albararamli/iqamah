@@ -14,6 +14,7 @@ reboot;
 # Install
 ```
 sudo apt-get install chromium-browser unclutter lxde
+sudo apt install xdotool
 ```
 
 # Enable VNC 
