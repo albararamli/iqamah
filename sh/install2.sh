@@ -28,7 +28,21 @@ chmod +x *.py
 ##rm mycron
 
 AUTO_FILE=/etc/xdg/lxsession/LXDE-pi/autostart # official Raspbian Buster with desktop and recommended software
-AUTO_FILE=/home/pi/.config/lxsession/LXDE-pi/autostart # the old RPI // remove sudo from the command
+
+if [ -z "$1" ] 
+then
+echo "new"
+else
+if [ $1 = "old" ] 
+then
+echo "old"
+AUTO_FILE=/home/pi/.config/lxsession/LXDE-pi/autostart # the old RPI
+else echo "keep the new"
+fi
+fi
+
+##AUTO_FILE=/etc/xdg/lxsession/LXDE-pi/autostart # official Raspbian Buster with desktop and recommended software
+##AUTO_FILE=/home/pi/.config/lxsession/LXDE-pi/autostart # the old RPI // remove sudo from the command
 echo "@lxpanel --profile LXDE-pi" > $AUTO_FILE
 echo "@pcmanfm --desktop --profile LXDE-pi" >> $AUTO_FILE
 echo "@xscreensaver -no-splash" >> $AUTO_FILE
