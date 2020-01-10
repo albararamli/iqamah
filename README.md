@@ -31,7 +31,7 @@ cd ~/iqamah/sh/; sh ./install.sh; sudo sh ./install2.sh;
 reboot;
 ```
 
-# In case error
+# In case error or it did not run after reboot
 ```
 cd ~; 
 rm -Rf iqamah;
