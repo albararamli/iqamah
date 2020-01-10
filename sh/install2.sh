@@ -31,13 +31,14 @@ AUTO_FILE=/etc/xdg/lxsession/LXDE-pi/autostart # official Raspbian Buster with d
 
 if [ -z "$1" ] 
 then
-echo "new"
+#echo "new"
 else
 if [ $1 = "old" ] 
 then
-echo "old"
+#echo "old"
 AUTO_FILE=/home/pi/.config/lxsession/LXDE-pi/autostart # the old RPI
-else echo "keep the new"
+else 
+#echo "keep the new"
 fi
 fi
 
