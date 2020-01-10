@@ -41,7 +41,7 @@ echo "15 02 * * * /sbin/reboot" >> mycron
 echo "#Download Local HTML" >> mycron
 echo "15 03 * * * "$SH_PATH"local.sh" >> mycron
 echo "#Move Mouse Location" >> mycron
-echo "#00 * * * * "$SH_PATH"MouseMove.sh" >> mycron
+echo "15 04 * * * "$SH_PATH"MouseMove.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
