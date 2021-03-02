@@ -24,5 +24,5 @@ echo "1" > "$DATA_PATH"chrome_status.txt
 #Open Chromium Browser Instance, if the device is not mic
 if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
 #echo "$(sed '4q;d' "$CONFIG_FILE")screen.php?size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}"
-chromium-browser --kiosk --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type "$(sed '4q;d' "$CONFIG_FILE")screen.php?size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}"
+chromium-browser --kiosk --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type "$(sed '4q;d' "$CONFIG_FILE")screen.php?size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" --user-data-dir=/home/pi
 fi
