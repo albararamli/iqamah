@@ -22,6 +22,15 @@ From xscreensaver click Settings, then at the top choose Disable Screen Sleep fr
 sudo apt-get install lxsession-default-apps
 ```
 
+# Install [for RP 3]
+```
+cd ~; 
+rm -Rf iqamah;
+git clone https://github.com/albararamli/iqamah.git; 
+cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh; 
+reboot;
+```
+
 # Install
 ```
 cd ~; 
