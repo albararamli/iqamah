@@ -9,7 +9,7 @@ This app allows users in Davis, Woodland, Brentwood, Sac, Madera to see:
 ```
 sudo apt-get update
 sudo apt-get install chromium-browser unclutter lxde
-sudo apt install xdotool
+sudo apt-get install xdotool
 ```
 
 # Disable Screen Sleep on Raspberry Pi
