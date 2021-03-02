@@ -51,6 +51,7 @@ echo "@lxpanel --profile LXDE-pi" > $AUTO_FILE
 echo "@pcmanfm --desktop --profile LXDE-pi" >> $AUTO_FILE
 echo "@xscreensaver -no-splash" >> $AUTO_FILE
 echo "@point-rpi" >> $AUTO_FILE
+echo "xhost +" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"MouseMove.sh" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"screen_on.sh" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"Chromium_Open.sh" >> $AUTO_FILE  # in the 3.5 and 7 screen remove "sudo" cuz chrome requires that
