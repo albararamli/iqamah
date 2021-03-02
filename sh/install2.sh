@@ -58,6 +58,6 @@ echo "sudo sh "$SH_PATH"iqamahTimeParser.sh" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"screenTimeCheck.py" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"mic_ini.py" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"mic_listen_online.py" >> $AUTO_FILE
-echo "python "$PY_PATH"internet.py" >> $AUTO_FILE # in my 7 inch last time works only when there is no sudo here
+echo "sudo python "$PY_PATH"internet.py" >> $AUTO_FILE # in my 7 inch last time works only when there is no sudo here
 echo "sudo python "$PY_PATH"sensor.py" >> $AUTO_FILE
 
