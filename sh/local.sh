@@ -24,7 +24,7 @@ MACX2=$(echo $MACX | sed 's/[:"]//g')
 #echo ${MACX2}
 ###
 if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
-curl -L -o "$LOCAL_PATH" "$(sed '4q;d' "$CONFIG_FILE")local.php?size=$(sed '5q;d' "$CONFIG_FILE")&city=$(sed '1q;d' "$CONFIG_FILE")&icdx=1&note_show=0&remain_show=0&time_show=0&refresh_stop=1&arrow_show=0&date_show=0&current_show=0"
+curl -L -o "$LOCAL_PATH" "$(sed '4q;d' "$CONFIG_FILE")local.php?size=$(sed '5q;d' "$CONFIG_FILE")&city=$(sed '1q;d' "$CONFIG_FILE")&icdx=1&note_show=0&remain_show=0&time_show=0&refresh_stop=1&arrow_show=0&date_show=0&current_show=0&mac=${MACX2}"
 #curl -L -o "$LOCAL_IMG" "$(sed '4q;d' "$CONFIG_FILE")internet.png"
 #curl -L -o "$LOCAL_IMG2" "$(sed '4q;d' "$CONFIG_FILE")all.png"
 fi
