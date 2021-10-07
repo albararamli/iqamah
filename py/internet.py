@@ -43,7 +43,7 @@ while 1:
   #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
   time.sleep(2)
   nextx0=is_connected()
-  time.sleep(2)
+  time.sleep(15)
   nextx1=is_connected()
   if nextx0!=nextx1:
     #time.sleep(2)
