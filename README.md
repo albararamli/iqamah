@@ -52,8 +52,11 @@ reboot;
 
 # Rotate the Screen 90 Degrees
 ```
-sudo nano /boot/config.txt
-display_rotate=1
+#in the old version you do the following:
+#sudo nano /boot/config.txt
+#display_rotate=1
+# in the new version you do the following
+DISPLAY=:0 xrandr --output HDMI-1 --rotate right
 ```
 
 
