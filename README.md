@@ -30,6 +30,14 @@ git clone https://github.com/albararamli/iqamah.git;
 cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh; 
 reboot;
 ```
+# Install [New RPI 3 os]
+```
+cd ~; 
+rm -Rf iqamah;
+git clone https://github.com/albararamli/iqamah.git; 
+cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh old; 
+reboot;
+```
 
 # Install
 ```
