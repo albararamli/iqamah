@@ -6,9 +6,9 @@ def os_system(command):
         #os.system("set +e")
         os.system(""+command)
         #os.system("set -e")
-        print "Done: "+command
+        print ("Done: "+command)
     except:
-        print "Error: "+command
+        print ("Error: "+command)
         pass
 #------------------------------------------------------------------
 def swap_it(status): #swap the status from 0 to 1 or opposite
