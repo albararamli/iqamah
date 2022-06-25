@@ -59,19 +59,19 @@ autoscreen_file=path_data+"autoscreen_status.txt"
 if os.path.exists(autoscreen_file):
     autoScreenStatusFile = open(autoscreen_file, "r")
     autoScreenStatus = autoScreenStatusFile.readline(1)
-    print "auto file exsist="+autoScreenStatus
+    print("auto file exsist="+autoScreenStatus)
 else:
     autoScreenStatus = "1"
-    print "auto file Not exsist="+autoScreenStatus
+    print("auto file Not exsist="+autoScreenStatus)
 '''
 screen_file=path_data+"screen_status.txt"
 if os.path.exists(screen_file):
     screenStatusFile = open(screen_file, "r")
     screenStatus = screenStatusFile.readline(1)
-    print "screen file exsist="+screenStatus
+    print("screen file exsist="+screenStatus)
 else:
     screenStatus = "0"
-    print "screen file Not exsist="+screenStatus
+    print("screen file Not exsist="+screenStatus)
 '''
 comm=""
 ran=""
@@ -92,41 +92,41 @@ if autoScreenStatus == "1":
         else:
             screenStatus="0"
     if screen_size!="27" and screen_size!="7":
-        print "screenStatus="+"Not here"
+        print("screenStatus="+"Not here")
     else:
-        print "screenStatus="+screenStatus
+        print("screenStatus="+screenStatus)
 
     
     # Turn Screen On for Fajr
-    print str(currentTime )+">="+str( screenOnBeforeFajr)+" and " +str(currentTime )+"<"+str(  screenOffAfterDuha)
+    print(str(currentTime )+">="+str( screenOnBeforeFajr)+" and " +str(currentTime )+"<"+str(  screenOffAfterDuha))
     if currentTime >= screenOnBeforeFajr and currentTime < screenOffAfterDuha:
-        print "Turn Screen On for Fajr"
+        print("Turn Screen On for Fajr")
         used="yes"
         if screenStatus == "0":
             comm="on"
             ran="1"
             
     # Turn Screen On for day
-    print str(currentTime )+"<"+str( screenOffAfterIsha)
+    print(str(currentTime )+"<"+str( screenOffAfterIsha))
     if currentTime < screenOffAfterIsha:
-        print str(IshaIqamah.time() )+">"+str( screenOffAfterIsha)
+        print(str(IshaIqamah.time() )+">"+str( screenOffAfterIsha))
         if IshaIqamah.time() > screenOffAfterIsha:
-            print "Turn Screen On for ishaa after 12"
+            print("Turn Screen On for ishaa after 12")
             used="yes"
             if screenStatus == "0":
                 comm="on"
                 ran="2"
     else:
-        print str(currentTime)+">="+str( screenOnBeforeDhuhr)
+        print(str(currentTime)+">="+str( screenOnBeforeDhuhr))
         if currentTime >= screenOnBeforeDhuhr:
-            print "Turn Screen On for the day"
+            print("Turn Screen On for the day")
             used="yes"
             if screenStatus == "0":
                 comm="on"
                 ran="3"
             
     if used!="yes":
-        print "Turn Screen On other wise"
+        print("Turn Screen On other wise")
         used="yes"
         if screenStatus == "1":
             comm="off"
@@ -134,28 +134,28 @@ if autoScreenStatus == "1":
     '''
     # Turn Screen On for Fajr
     if currentTime >= screenOnBeforeFajr and currentTime < screenOffAfterDuha:
-        print "Turn Screen On for Fajr"
+        print("Turn Screen On for Fajr")
         if screenStatus == "0":
             comm="on"
             ran="1"
 
     # Turn Screen Off After Fajr
     if currentTime >= screenOffAfterDuha and currentTime < screenOnBeforeDhuhr:
-        print "Turn Screen Off After Fajr"
+        print("Turn Screen Off After Fajr")
         if screenStatus == "1":
             comm="off"
             ran="2"
             
     # Turn Screen On Before Dhuhr
     if currentTime >= screenOnBeforeDhuhr and currentTime < screenOffAfterIsha and IshaIqamah.time() < screenOffAfterIsha:
-        print "Turn Screen On Before Dhuhr"
+        print("Turn Screen On Before Dhuhr")
         if screenStatus == "0":
             comm="on"
             ran="3"
             
     # Turn Screen On Before Dhuhr
     if currentTime >= screenOnBeforeDhuhr and currentTime > screenOffAfterIsha  and IshaIqamah.time() > screenOffAfterIsha:
-        print "Turn Screen On Before Dhuhr"
+        print("Turn Screen On Before Dhuhr")
         if screenStatus == "0":
             comm="on"
             ran="3"
@@ -163,7 +163,7 @@ if autoScreenStatus == "1":
     # Turn Screen Off After Isha
     if currentTime >= screenOffAfterIsha and IshaIqamah.time() < screenOffAfterIsha:
         # if the screenOffAfterIsha >=00:00 I have to deal with it becouase it should be for next day not the same day. Now I just let the time less than 12
-        print "Turn Screen Off After Isha"
+        print("Turn Screen Off After Isha")
         if screenStatus == "1":
             comm="off"
             ran="4"
@@ -171,13 +171,13 @@ if autoScreenStatus == "1":
      # Turn Screen Off for the Night
     if currentTime < screenOnBeforeFajr:
         # if the screenOffAfterIsha >=00:00 I have to deal with it becouase it should be for next day not the same day. Now I just let the time less than 12
-        print "Turn Screen Off for the Night"
+        print("Turn Screen Off for the Night")
         if screenStatus == "1":
             comm="off"
             ran="4"
     '''
     if comm=="on":
-        print "Turn ON"
+        print("Turn ON")
         '''
         os_system('sh '+dir_local+'Chromium_Open.sh &')
         time.sleep(1.0)
@@ -185,19 +185,19 @@ if autoScreenStatus == "1":
         os_system('sh '+path_sh+'screen_on.sh')
         
     if comm=="off":     
-        print "Turn OFF"
+        print("Turn OFF")
         '''
         os_system('sh '+dir_local+'Chromium_Close.sh &')
         time.sleep(1.0)
         '''
         os_system('sh '+path_sh+'screen_off.sh')
 
-print "comm="+ran+"   "+"comm="+comm
+print("comm="+ran+"   "+"comm="+comm)
 '''
-print "comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOnBeforeFajr)+" and " +str(currentTime )+"<"+str(  screenOffAfterDuha)
-print "comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOffAfterDuha)+" and " +str(currentTime )+"<"+str(  screenOnBeforeDhuhr)
-print "comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOnBeforeDhuhr)+" and "+str(currentTime )+"<"+str(  screenOffAfterIsha)
-print "comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOffAfterIsha)+" or "  +str(currentTime )+"<"+str(  screenOnBeforeFajr)
+print ("comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOnBeforeFajr)+" and " +str(currentTime )+"<"+str(  screenOffAfterDuha))
+print ("comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOffAfterDuha)+" and " +str(currentTime )+"<"+str(  screenOnBeforeDhuhr))
+print ("comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOnBeforeDhuhr)+" and "+str(currentTime )+"<"+str(  screenOffAfterIsha))
+print ("comm="+ran+"   "+"comm="+comm+"   "+str(currentTime )+">="+str( screenOffAfterIsha)+" or "  +str(currentTime )+"<"+str(  screenOnBeforeFajr))
 '''
 # Sleep for a second before rerunning the loop
 #timeSleep.sleep(1)
