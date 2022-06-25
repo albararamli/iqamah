@@ -11,12 +11,13 @@ import time
 import socket
 REMOTE_SERVER = "www.google.com"
 def is_connected():
+  socket.setdefaulttimeout(10)
   try:
     host = socket.gethostbyname(REMOTE_SERVER)
     s = socket.create_connection((host, 80), 2)
     return True
   except:
-    pass
+    #pass
     return False
 time.sleep(15)
 tx = time.asctime( time.localtime(time.time()) )
