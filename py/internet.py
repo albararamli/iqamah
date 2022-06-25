@@ -8,6 +8,7 @@ if(device_type=='mic'):
     
     
 import time
+'''
 import socket
 REMOTE_SERVER = "www.google.com"
 def is_connected():
@@ -19,6 +20,16 @@ def is_connected():
   except:
     #pass
     return False
+'''
+#########################
+import requests
+def is_connected():
+  try:
+    req = requests.request('GET', 'https://www.google.com',timeout=(10))
+    return True
+  except requests.ReadTimeout:
+    return False
+#########################
 time.sleep(15)
 tx = time.asctime( time.localtime(time.time()) )
 print("Starting ",tx)
