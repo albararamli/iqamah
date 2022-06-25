@@ -20,7 +20,7 @@ def is_connected():
     return False
 time.sleep(15)
 tx = time.asctime( time.localtime(time.time()) )
-print "Starting ",tx
+print("Starting ",tx)
 ppx="Starting "+tx
 os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
 inix0=is_connected()
@@ -38,7 +38,7 @@ dir_local=path_sh
 file_chrome=path_data+'chrome_status.txt'
 pass_ini=1
 while 1:
-  ##print "Loop"
+  ##print("Loop")
   #ppx="loop"
   #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
   time.sleep(2)
@@ -53,17 +53,17 @@ while 1:
 
   #ppx="S(0)="+ str(nextx0)+ " S(1)=" + str(nextx1)+ " S(Final)=" + str(nextx)+ " "+tx
   #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
-  #print ppx
+  #print(ppx)
   if nextx!=inix:
     tx = time.asctime( time.localtime(time.time()) )
 
-    print "From=", inix, " To=" , nextx, " ", tx
+    print("From=", inix, " To=" , nextx, " ", tx)
     ppx="From="+ str(inix)+ " To=" + str(nextx)+ " "+tx
     os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
     if nextx == True:
       pass_ini=1
       tx = time.asctime( time.localtime(time.time()) )
-      print "Wake", tx
+      print("Wake", tx)
       ppx="Wake "+tx
       os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
       os_system("sh "+dir_local+'Chromium_Close.sh &')
@@ -74,7 +74,7 @@ while 1:
     else:
       pass_ini=0
       tx = time.asctime( time.localtime(time.time()) )
-      print "Sleep", tx
+      print("Sleep", tx)
       ppx="Sleep "+tx
       os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
       os_system("sh "+dir_local+'Chromium_Close.sh &')
@@ -87,7 +87,7 @@ while 1:
       if nextx==False:
         if pass_ini==1:
           tx = time.asctime( time.localtime(time.time()) )
-          print "Down=[", pass_ini, "] ", tx
+          print("Down=[", pass_ini, "] ", tx)
           ppx="Down=["+str(pass_ini)+"] "+tx
           os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
           os_system("sh "+dir_local+'Chromium_Close.sh &')
