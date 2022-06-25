@@ -28,7 +28,7 @@ def is_connected():
   try:
     req = requests.request('GET', 'https://www.google.com',timeout=(10))
     r= True
-  except requests.ReadTimeout:
+  except:
     r= False
   return r
 #########################
