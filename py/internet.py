@@ -24,11 +24,13 @@ def is_connected():
 #########################
 import requests
 def is_connected():
+  r= False
   try:
     req = requests.request('GET', 'https://www.google.com',timeout=(10))
-    return True
+    r=return True
   except requests.ReadTimeout:
-    return False
+    r= False
+  return r
 #########################
 time.sleep(15)
 tx = time.asctime( time.localtime(time.time()) )
