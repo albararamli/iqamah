@@ -8,26 +8,19 @@ This app allows users in Davis, Woodland, Brentwood, Sac, Madera to see:
 # Install
 ```
 sudo apt-get update
-sudo apt-get install chromium-browser unclutter lxde
-sudo apt-get install xdotool
+sudo apt-get install chromium-browser unclutter lxde xdotool xscreensaver lxsession-default-apps
 ```
 
 # Disable Screen Sleep on Raspberry Pi
-```
-sudo apt-get install xscreensaver
-```
 
 From xscreensaver click Settings, then at the top choose Disable Screen Sleep from the dropdown. 
-```
-sudo apt-get install lxsession-default-apps
-```
 
-# Install [for RP 3]
+# Install [for RP 3 the official]
 ```
 cd ~; 
 rm -Rf iqamah;
 git clone https://github.com/albararamli/iqamah.git; 
-cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh; 
+cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh; sh ./local.sh; 
 reboot;
 ```
 # Install [New RPI 3 os]
