@@ -84,7 +84,7 @@ while 1:
       time.sleep(1.0)
       ##do_it(1,file_chrome)
       os_system("sh "+dir_local+'Chromium_Open.sh &')
-      time.sleep(1)
+      time.sleep(10)
     else:
       pass_ini=0
       tx = time.asctime( time.localtime(time.time()) )
@@ -95,7 +95,7 @@ while 1:
       time.sleep(1.0)
       ##do_it(1,file_chrome)
       os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
-      time.sleep(1)
+      time.sleep(55)
   else:
     if nextx==inix:
       if nextx==False:
@@ -108,7 +108,7 @@ while 1:
           time.sleep(1.0)
           ##do_it(1,file_chrome)
           os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
-          time.sleep(1)
+          time.sleep(55)
         pass_ini=0
       else:
         pass_ini=1
