@@ -22,7 +22,7 @@ TRIG=15
 ECHO=13
 LED=11
 
-print "Progress"
+print("Progress")
 
 GPIO.setup(LED,GPIO.OUT)
 GPIO.setup(TRIG,GPIO.OUT)
@@ -30,7 +30,7 @@ GPIO.setup(ECHO,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 GPIO.output(TRIG,False)
 
-print "Wait for settle"
+print("Wait for settle")
 
 time.sleep(2)
 k=0
@@ -45,22 +45,22 @@ while 1:
         #time.sleep(0.5)
 
     status_web= get_it(file_web)
-    print "WEB==> ",status_web
+    print("WEB==> ",status_web)
     GPIO.output(TRIG,True)
     time.sleep(0.00001)
     GPIO.output(TRIG,False)
-    # print "======================="
+    # print("=======================")
     i=0
     while GPIO.input(ECHO)==0:
         pulse_start=time.time()
-        #print "ECHO Sender",i
+        #print("ECHO Sender",i)
         i=i+1
         if(i>3000):
             break
     j=0
     while GPIO.input(ECHO)==1:
         pulse_end=time.time()
-        #print "ECHO Receiver",j
+        #print("ECHO Receiver",j
         j=j+1
         if(j>3000):
             break
@@ -71,11 +71,10 @@ while 1:
     if(i<=3000 and j<=3000):
         d=round(pulse_d*17150,2)
         k=k+1
-        #print k,"] Distense=",d
-
-        print k,"]  D=",d,"cm"
+        #print(k,"] Distense=",d)
+        print(k,"]  D=",d,"cm")
         if(d<=180):
-            print "See"
+            print("See")
             if(n<0):
                 n=0
             else:
@@ -147,7 +146,7 @@ while 1:
                     #time.sleep(1)
 
         else:
-            print "Empty=",n
+            print("Empty=",n)
             if(n>0):
                 n=-1
             else:
