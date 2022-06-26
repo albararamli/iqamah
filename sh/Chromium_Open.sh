@@ -18,7 +18,7 @@ read MAC_W </sys/class/net/$IFACE_W/address
 MACX=${IFACE_E}${MAC_E}${IFACE_W}${MAC_W}
 #MACX2="${MACX//:}"
 MACX2=$(echo $MACX | sed 's/[:"]//g')
-#echo ${MACX2}
+echo ${MACX2} > "${DATA_PATH}sbr.sbr"
 ###
 echo "1" > "$DATA_PATH"chrome_status.txt
 #Open Chromium Browser Instance, if the device is not mic
