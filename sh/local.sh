@@ -24,19 +24,20 @@ MACX2=$(echo $MACX | sed 's/[:"]//g')
 #echo ${MACX2}
 ### 
 if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
-curl -L -o "$LOCAL_PATH" "$(sed '4q;d' "$CONFIG_FILE")local.php?size=$(sed '5q;d' "$CONFIG_FILE")&city=$(sed '1q;d' "$CONFIG_FILE")&icdx=1&note_show=0&remain_show=0&time_show=0&refresh_stop=1&arrow_show=0&date_show=0&current_show=0&mac=${MACX2}"
-#curl -L -o "$LOCAL_IMG" "$(sed '4q;d' "$CONFIG_FILE")internet.png"
-#curl -L -o "$LOCAL_IMG2" "$(sed '4q;d' "$CONFIG_FILE")all.png"
+curl -Lo "$LOCAL_PATH" "$(sed '4q;d' "$CONFIG_FILE")local.php?size=$(sed '5q;d' "$CONFIG_FILE")&city=$(sed '1q;d' "$CONFIG_FILE")&icdx=1&note_show=0&remain_show=0&time_show=0&refresh_stop=1&arrow_show=0&date_show=0&current_show=0&mac=${MACX2}"
+#curl -Lo "$LOCAL_IMG" "$(sed '4q;d' "$CONFIG_FILE")internet.png"
+#curl -Lo "$LOCAL_IMG2" "$(sed '4q;d' "$CONFIG_FILE")all.png"
 ###############
 ###############
-#######
-LOCAL_PATH_EXPORT_YEAR=$(date +%Y)
+for VARIABLE in 0 1 2 3 4 5 6 7 8 9 10    
+do
+#Liunx
+LOCAL_PATH_EXPORT_YEAR=$(date --date=$VARIABLE" year" +%Y)
+#MACOS
+#LOCAL_PATH_EXPORT_YEAR=$(date -v+"$VARIABLE""y" +%Y)
 LOCAL_PATH_EXPORT="$DATA_PATH""$LOCAL_PATH_EXPORT_YEAR".json
-curl -L -o "$LOCAL_PATH_EXPORT" "$(sed '4q;d' "$CONFIG_FILE")export.php?city=$(sed '1q;d' "$CONFIG_FILE")&year=$LOCAL_PATH_EXPORT_YEAR&typex=json"
-######
-LOCAL_PATH_EXPORT_YEAR=$(date --date="1 year" +%Y)
-LOCAL_PATH_EXPORT="$DATA_PATH""$LOCAL_PATH_EXPORT_YEAR".json
-curl -L -o "$LOCAL_PATH_EXPORT" "$(sed '4q;d' "$CONFIG_FILE")export.php?city=$(sed '1q;d' "$CONFIG_FILE")&year=$LOCAL_PATH_EXPORT_YEAR&typex=json"
+curl -Lo "$LOCAL_PATH_EXPORT" "$(sed '4q;d' "$CONFIG_FILE")export.php?city=$(sed '1q;d' "$CONFIG_FILE")&year=$LOCAL_PATH_EXPORT_YEAR&typex=json"
+done
 ###############
 ###############
 fi
