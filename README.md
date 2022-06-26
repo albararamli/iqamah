@@ -25,7 +25,7 @@ cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh;
 
 # right after the costomizing the config
 ```
-sh ./local.sh; 
+cd ~/iqamah/sh/; sudo sh ./local.sh; 
 reboot;
 ```
 
