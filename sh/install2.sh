@@ -54,6 +54,7 @@ echo "@point-rpi" >> $AUTO_FILE
 echo "xhost +" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"MouseMove.sh" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"screen_on.sh" >> $AUTO_FILE
+echo "sudo sh "$SH_PATH"local.sh" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"Chromium_Open.sh" >> $AUTO_FILE  # in the 3.5 and 7 screen remove "sudo" cuz chrome requires that
 #echo "sudo sh "$SH_PATH"iqamahTimeParser.sh" >> $AUTO_FILE
 #echo "sudo python "$PY_PATH"screenTimeCheck.py" >> $AUTO_FILE
