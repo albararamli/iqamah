@@ -1,7 +1,52 @@
 from fun_sbr import *
 import os
 import sys
-
+##############################
+import json
+import datetime
+import re
+##################
+def repx(x,letter='A',num='0',put=':)'):
+  y=re.findall('<span id="'+letter+num+'">.*</span>', x)
+  #print(y)
+  w = re.sub(">.*<", ">"+put+"<", y[0])
+  #print(w)
+  x=re.sub(y[0],w,x)
+  return x
+##################
+def update_local():
+  f1 = open(path_data+"local.html")
+  x=f1.read()
+  the_time_now = datetime.datetime.now()
+  f2 = open(path_data+str(the_time_now.year)+'.json')
+  data = json.load(f2)
+  n=0
+  for row in data:
+    if n!=0:
+      y=int(str(row[0]).strip())
+      m=int(str(row[1]).strip())
+      d_name=str(row[2]).strip() 
+      d=int(str(row[3]).strip())
+      if the_time_now.year==y and the_time_now.month==m and the_time_now.day==d:
+      #if 2022==y and 1==m and 7==d:
+        ######
+        prayer_id=4
+        for i in range(0,6):
+          x=repx(x,letter='A',num=str(i),put=str(row[prayer_id]).strip())
+          prayer_id=prayer_id+1
+          x=repx(x,letter='I',num=str(i),put=str(row[prayer_id]).strip())
+          prayer_id=prayer_id+1
+          if d_name == "Friday" and i==2 and prayer_id==10:
+            #print(d_name,i,prayer_id)
+            x=repx(x,letter='T',num=str(i),put="Jumuah")
+    n=n+1
+  f1.close()
+  f2.close()
+  #########
+  f3 = open(path_data+"output.html","w")
+  f3.write(x)
+  f3.close()
+##############################
 #exit the file if the device is not a monitor device
 if(device_type=='mic'):
     sys.exit() 
