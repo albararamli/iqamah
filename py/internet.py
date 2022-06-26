@@ -6,7 +6,7 @@ import json
 import datetime
 import re
 ##################
-def repx(x,letter='A',num='0',put=':)'):
+def update_local_change(x,letter='A',num='0',put=':)'):
   y=re.findall('<span id="'+letter+num+'">.*</span>', x)
   #print(y)
   w = re.sub(">.*<", ">"+put+"<", y[0])
@@ -32,13 +32,13 @@ def update_local():
         ######
         prayer_id=4
         for i in range(0,6):
-          x=repx(x,letter='A',num=str(i),put=str(row[prayer_id]).strip())
+          x=update_local_change(x,letter='A',num=str(i),put=str(row[prayer_id]).strip())
           prayer_id=prayer_id+1
-          x=repx(x,letter='I',num=str(i),put=str(row[prayer_id]).strip())
+          x=update_local_change(x,letter='I',num=str(i),put=str(row[prayer_id]).strip())
           prayer_id=prayer_id+1
           if d_name == "Friday" and i==2 and prayer_id==10:
             #print(d_name,i,prayer_id)
-            x=repx(x,letter='T',num=str(i),put="Jumuah")
+            x=update_local_change(x,letter='T',num=str(i),put="Jumuah")
     n=n+1
   f1.close()
   f2.close()
@@ -129,7 +129,7 @@ while 1:
       time.sleep(1.0)
       ##do_it(1,file_chrome)
       os_system("sh "+dir_local+'Chromium_Open.sh &')
-      time.sleep(10)
+      time.sleep(15)
     else:
       pass_ini=0
       tx = time.asctime( time.localtime(time.time()) )
@@ -139,8 +139,9 @@ while 1:
       os_system("sh "+dir_local+'Chromium_Close.sh &')
       time.sleep(1.0)
       ##do_it(1,file_chrome)
+      update_local()
       os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
-      time.sleep(45)
+      time.sleep(60)
   else:
     if nextx==inix:
       if nextx==False:
@@ -152,8 +153,9 @@ while 1:
           os_system("sh "+dir_local+'Chromium_Close.sh &')
           time.sleep(1.0)
           ##do_it(1,file_chrome)
+          update_local()
           os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
-          time.sleep(45)
+          time.sleep(60)
         pass_ini=0
       else:
         pass_ini=1
