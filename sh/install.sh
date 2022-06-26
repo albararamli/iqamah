@@ -32,14 +32,14 @@ chmod +x *.py
 crontab -l > mycron
 #echo new cron into cron file
 echo "####Script Star####" > mycron
-echo "#Update parsedIqamah.csv File Once Every Day 15 min after Midnight" >> mycron
-echo "00 03 * * * "$SH_PATH"iqamahTimeParser.sh" >> mycron
-echo "#Run screenTimeCheck.py Script Every 5 min" >> mycron
-echo "*/5 * * * * sudo python "$PY_PATH"screenTimeCheck.py" >> mycron
+#echo "#Update parsedIqamah.csv File Once Every Day 15 min after Midnight" >> mycron
+#echo "00 03 * * * "$SH_PATH"iqamahTimeParser.sh" >> mycron
+#echo "#Run screenTimeCheck.py Script Every 5 min" >> mycron
+#echo "*/5 * * * * sudo python "$PY_PATH"screenTimeCheck.py" >> mycron
 echo "#Restart RPi Everyday at 2:15AM" >> mycron
-echo "15 02 * * * /sbin/reboot" >> mycron
+echo "15 01 * * * /sbin/reboot" >> mycron
 echo "#Download Local HTML" >> mycron
-echo "15 */8 * * * "$SH_PATH"local.sh" >> mycron
+echo "10 */8 * * * "$SH_PATH"local.sh" >> mycron
 echo "#Move Mouse Location" >> mycron
 echo "15 04 * * * "$SH_PATH"MouseMove.sh" >> mycron
 #install new cron file
