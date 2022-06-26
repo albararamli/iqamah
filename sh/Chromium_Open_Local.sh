@@ -10,7 +10,7 @@ fi
 #echo "$MY_PATH"
 CONFIG_FILE="$MY_PATH/../"config.txt
 DATA_PATH="$MY_PATH/../data/"
-LOCAL_FILE="$DATA_PATH"local.html
+LOCAL_FILE="$DATA_PATH"output.html
 
 echo "1" > "$DATA_PATH"chrome_status.txt
 # Open Chromium Browser Instance, if the device is not mic
