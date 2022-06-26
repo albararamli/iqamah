@@ -28,6 +28,7 @@ file_screen=path_data+'screen_status.txt'
 file_autoscreen=path_data+'autoscreen_status.txt'
 file_chrome=path_data+'chrome_status.txt'
 ####
+what_now=""
 while True:
     try:
     ######
@@ -38,8 +39,20 @@ while True:
         status_screen=str(get_it(file_screen))
         status_autoscreen=str(get_it(file_autoscreen))
         status_chrome=str(get_it(file_chrome))
-        h=requests.get(dir_online+'make.php?city='+city+'&device_id='+device_id+'&device_type='+device_type+'&'+'action=update&status_chrome='+status_chrome+'&status_autoscreen='+status_autoscreen+'&status_screen='+status_screen+'&status_web='+status_web+'&status_local='+status_local)
-      ######
+        try:
+            f111 = open(path_data+"sbr.sbr")
+            x111=f111.read()
+            x111=x111.strip()
+        except:
+            x111="111"
+        h=requests.get(dir_online+'make.php?city='+city+'&device_id='+device_id+'&device_type='+device_type+'&'+'action=update&status_chrome='+status_chrome+'&status_autoscreen='+status_autoscreen+'&status_screen='+status_screen+'&status_web='+status_web+'&status_local='+status_local+'&mac='+x111)      	
+        if what_now=="" and x111!="111":
+            if h.text=="BLOCKED" or h.text=="PASSED":
+                what_now=h.text
+                #print(what_now)
+                os.system("sudo echo "+x111+what_now+" | base64 > "+path_data+"sbr2.sbr")
+        #print(dir_online+'make.php?city='+city+'&device_id='+device_id+'&device_type='+device_type+'&'+'action=update&status_chrome='+status_chrome+'&status_autoscreen='+status_autoscreen+'&status_screen='+status_screen+'&status_web='+status_web+'&status_local='+status_local)      	
+        ######
         r = requests.get(dir_online+ city+'/'+device_id+'/internet.json')
 
         if r.status_code != 404:
