@@ -18,7 +18,7 @@ From xscreensaver click Settings, then at the top choose Disable Screen Sleep fr
 # Install [for RP 3 the official]
 ```
 cd ~; 
-rm -Rf iqamah;
+sudo rm -Rf iqamah;
 git clone https://github.com/albararamli/iqamah.git; 
 cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh; 
 ```
