@@ -97,66 +97,67 @@ dir_local=path_sh
 file_chrome=path_data+'chrome_status.txt'
 pass_ini=1
 while 1:
-  ##print("Loop")
-  #ppx="loop"
-  #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
-  time.sleep(2)
-  nextx0=is_connected()
-  time.sleep(15)
-  nextx1=is_connected()
-  if nextx0!=nextx1:
-    #time.sleep(2)
-    nextx=True #is_connected()
-  else:
-    nextx=nextx0
-
-  #ppx="S(0)="+ str(nextx0)+ " S(1)=" + str(nextx1)+ " S(Final)=" + str(nextx)+ " "+tx
-  #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
-  #print(ppx)
-  if nextx!=inix:
-    tx = time.asctime( time.localtime(time.time()) )
-
-    print("From=", inix, " To=" , nextx, " ", tx)
-    ppx="From="+ str(inix)+ " To=" + str(nextx)+ " "+tx
-    os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
-    if nextx == True:
-      pass_ini=1
-      tx = time.asctime( time.localtime(time.time()) )
-      print("Wake", tx)
-      ppx="Wake "+tx
-      os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
-      os_system("sh "+dir_local+'Chromium_Close.sh &')
-      time.sleep(1.0)
-      ##do_it(1,file_chrome)
-      os_system("sh "+dir_local+'Chromium_Open.sh &')
-      time.sleep(15)
+  try:
+    ##print("Loop")
+    #ppx="loop"
+    #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
+    time.sleep(2)
+    nextx0=is_connected()
+    time.sleep(15)
+    nextx1=is_connected()
+    if nextx0!=nextx1:
+      #time.sleep(2)
+      nextx=True #is_connected()
     else:
-      pass_ini=0
+      nextx=nextx0
+    #ppx="S(0)="+ str(nextx0)+ " S(1)=" + str(nextx1)+ " S(Final)=" + str(nextx)+ " "+tx
+    #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
+    #print(ppx)
+    if nextx!=inix:
       tx = time.asctime( time.localtime(time.time()) )
-      print("Sleep", tx)
-      ppx="Sleep "+tx
+      print("From=", inix, " To=" , nextx, " ", tx)
+      ppx="From="+ str(inix)+ " To=" + str(nextx)+ " "+tx
       os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
-      os_system("sh "+dir_local+'Chromium_Close.sh &')
-      time.sleep(1.0)
-      ##do_it(1,file_chrome)
-      update_local()
-      os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
-      time.sleep(60)
-  else:
-    if nextx==inix:
-      if nextx==False:
-        if pass_ini==1:
-          tx = time.asctime( time.localtime(time.time()) )
-          print("Down=[", pass_ini, "] ", tx)
-          ppx="Down=["+str(pass_ini)+"] "+tx
-          os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
-          os_system("sh "+dir_local+'Chromium_Close.sh &')
-          time.sleep(1.0)
-          ##do_it(1,file_chrome)
-          update_local()
-          os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
-          time.sleep(60)
-        pass_ini=0
-      else:
+      if nextx == True:
         pass_ini=1
-  inix=nextx
+        tx = time.asctime( time.localtime(time.time()) )
+        print("Wake", tx)
+        ppx="Wake "+tx
+        os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
+        os_system("sh "+dir_local+'Chromium_Close.sh &')
+        time.sleep(1.0)
+        ##do_it(1,file_chrome)
+        os_system("sh "+dir_local+'Chromium_Open.sh &')
+        time.sleep(15)
+      else:
+        pass_ini=0
+        tx = time.asctime( time.localtime(time.time()) )
+        print("Sleep", tx)
+        ppx="Sleep "+tx
+        os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
+        os_system("sh "+dir_local+'Chromium_Close.sh &')
+        time.sleep(1.0)
+        ##do_it(1,file_chrome)
+        update_local()
+        os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
+        time.sleep(60)
+    else:
+      if nextx==inix:
+        if nextx==False:
+          if pass_ini==1:
+            tx = time.asctime( time.localtime(time.time()) )
+            print("Down=[", pass_ini, "] ", tx)
+            ppx="Down=["+str(pass_ini)+"] "+tx
+            os_system("echo \""+ppx+"\" >> "+path_data+"internet_status.txt")
+            os_system("sh "+dir_local+'Chromium_Close.sh &')
+            time.sleep(1.0)
+            ##do_it(1,file_chrome)
+            update_local()
+            os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
+            time.sleep(60)
+          pass_ini=0
+        else:
+          pass_ini=1
+    inix=nextx
+  except:
+    print("ERROR")
