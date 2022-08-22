@@ -15,7 +15,6 @@ LOCAL_PATH_BLOCK="$DATA_PATH"block.html
 #LOCAL_IMG="$DATA_PATH"internet.png
 #LOCAL_IMG2="$DATA_PATH"all.png
 ###
-rm LOCAL_PATH="$DATA_PATH"local.html
 IFACE_E="eth0"
 read MAC_E </sys/class/net/$IFACE_E/address
 IFACE_W="wlan0"
