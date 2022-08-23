@@ -5,7 +5,8 @@ import sys
 import json
 import datetime
 import re
-##################
+######################################################
+######################################################
 def update_local_change(x,letter='A',num='0',put=':)'):
   y=re.findall('<span id="'+letter+num+'">.*</span>', x)
   #print(y)
@@ -96,8 +97,32 @@ nextx=inix
 dir_local=path_sh
 file_chrome=path_data+'chrome_status.txt'
 pass_ini=1
+######################################################
+######################################################
+YYYY0=0
+MMMM0=0
+DDDD0=0
+######################################################
+######################################################
 while 1:
   try:
+    ######################################################
+    ######################################################
+    GGGG1 = datetime.datetime.now()
+    YYYY1=GGGG1.year
+    MMMM1=GGGG1.month
+    DDDD1=GGGG1.day
+    ######################################################
+    ######################################################
+    if YYYY1!=YYYY0 or MMMM1!=MMMM0 or DDDD1!=DDDD0:
+      update_local()
+    ######################################################
+    ######################################################
+    YYYY0=YYYY1
+    MMMM0=MMMM1
+    DDDD0=DDDD1
+    ######################################################
+    ######################################################
     ##print("Loop")
     #ppx="loop"
     #os.system("echo \""+ppx+"\" >> /home/pi/rpiMasjidDisplay/sh/internet_status.txt")
@@ -152,7 +177,7 @@ while 1:
             os_system("sh "+dir_local+'Chromium_Close.sh &')
             time.sleep(1.0)
             ##do_it(1,file_chrome)
-            update_local()
+            ##update_local()
             os_system("sh "+dir_local+'Chromium_Open_Local.sh &')
             time.sleep(60)
           pass_ini=0
