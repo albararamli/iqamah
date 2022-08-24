@@ -187,5 +187,5 @@ while 1:
         else:
           pass_ini=1
     inix=nextx
-  except:
-    print("ERROR")
+  except Exception as e:
+    print("ERROR",str(e))
