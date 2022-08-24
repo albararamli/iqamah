@@ -31,7 +31,7 @@ def update_local():
       if the_time_now.year==y and the_time_now.month==m and the_time_now.day==d:
         #if 2022==y and 1==m and 7==d:
         x=update_local_change(x,letter='today_name',num="",put=d_name)
-        x=update_local_change(x,letter='tareekh2',num="",put=m+"/"+d+"/"+y)
+        x=update_local_change(x,letter='tareekh2',num="",put=str(m)+"/"+str(d)+"/"+str(y))
         x=update_local_change(x,letter='tareekh1',num="",put="")
         ######
         prayer_id=4
