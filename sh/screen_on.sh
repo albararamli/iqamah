@@ -21,8 +21,7 @@ xrandr --output HDMI-1 --auto --rotate right
 fi
 
 if [ "$(sed '1q;d' "$CONFIG_FILE")" == 'denver' ]; then
-xrandr --output HDMI-1 --auto --rotate left
-xrandr --output HDMI-1 --mode 1920x1080
+xrandr --output HDMI-1 --auto --rotate left --mode 1920x1080
 fi
 
 fi
