@@ -12,19 +12,18 @@ CONFIG_FILE="$MY_PATH/../"config.txt
 DATA_PATH="$MY_PATH/../data/"
 
 echo "1" > "$DATA_PATH"screen_status.txt
-if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
+#if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
 vcgencmd display_power 1
 sudo echo 0 > /sys/class/backlight/rpi_backlight/bl_power # LCD 7'' turn on with 0 tag
 
 if [ "$(sed '1q;d' "$CONFIG_FILE")" != 'denver' ]; then
 xrandr --output HDMI-1 --auto --rotate right
 fi
-
-if [ "$(sed '1q;d' "$CONFIG_FILE")" == 'denver' ]; then
+if [ "$(sed '1q;d' "$CONFIG_FILE")" = 'denver' ]; then
 xrandr --output HDMI-1 --auto --rotate left --mode 1920x1080
 fi
 
-fi
+#fi
 
 
 ###### Old Way ######
