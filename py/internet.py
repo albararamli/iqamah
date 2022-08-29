@@ -38,8 +38,9 @@ def update_local():
         for i in range(0,6):
           x=update_local_change(x,letter='A',num=str(i),put=str(row[prayer_id]).strip())
           prayer_id=prayer_id+1
-          x=update_local_change(x,letter='I',num=str(i),put=str(row[prayer_id]).strip())
-          prayer_id=prayer_id+1
+          if len(row)>10:
+            x=update_local_change(x,letter='I',num=str(i),put=str(row[prayer_id]).strip())
+            prayer_id=prayer_id+1
           if d_name == "Friday" and i==2 and prayer_id==10:
             #print(d_name,i,prayer_id)
             x=update_local_change(x,letter='T',num=str(i),put="Jumuah")
