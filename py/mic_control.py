@@ -21,18 +21,22 @@ RELAY_6=36
 RELAY_7=38
 RELAY_8=40#External Speaker
 
+LED_RED=33
+LED_BLUE=29
+LED_GREEN=35
+
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(29, GPIO.OUT)#blue led
+GPIO.setup(LED_BLUE, GPIO.OUT)#blue led
 
 ##GPIO.setup(40, GPIO.OUT)#Control the Relay
 GPIO.setup(RELAY_2, GPIO.OUT)#Control the Relay
 GPIO.setup(RELAY_3, GPIO.OUT)#Control the Relay
 GPIO.setup(RELAY_4, GPIO.OUT)#Control the Relay
 
-GPIO.setup(33, GPIO.OUT)#Red led
-GPIO.setup(35, GPIO.OUT)#the Green led
-GPIO.setup(31, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#the Blue switch
-GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#the Red switch
+GPIO.setup(LED_RED, GPIO.OUT)#Red led
+GPIO.setup(LED_GREEN, GPIO.OUT)#the Green led
+#GPIO.setup(31, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#the Blue switch
+#GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#the Red switch
 
 status_web=-1 #blue led status 0,1
 status_local=-1 #green led status 0,1
@@ -54,7 +58,7 @@ if(x=="WEB_OFF"):
     status_web=0
 #########
 if(status_web!=-1):
-    GPIO.output(29,status_web) #blue led
+    GPIO.output(LED_BLUE,status_web) #blue led
     do_it(status_web,file_web) # wite the blue led status in the file status_web.txt
     print ("Web-->",status_web)
 ############################################################################
@@ -65,8 +69,8 @@ if(x=="RELAY_OFF"):
     status_local=0
 #########
 if(status_local!=-1):
-    GPIO.output(33, swap_it(status_local)) #Red led
-    GPIO.output(35, status_local)#the Green led
+    GPIO.output(LED_RED, swap_it(status_local)) #Red led
+    GPIO.output(LED_GREEN, status_local)#the Green led
     ##GPIO.output(40, status_local)#Control the Relay
     RELAY_STATUS=swap_it(status_local)
     if(RELAY_STATUS==0):#ON
