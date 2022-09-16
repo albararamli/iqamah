@@ -1,7 +1,7 @@
 import os
 import sys
 
-def execfile(filex):
+def runx(filex):
     if sys.version_info.major==2:
         execfile(filex)
     else:
