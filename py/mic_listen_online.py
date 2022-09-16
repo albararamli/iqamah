@@ -1,4 +1,6 @@
 import RPi.GPIO as GPIO
+GPIO.setwarnings(False) 
+
 from fun_sbr import *
 import os
 import json
