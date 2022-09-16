@@ -62,7 +62,7 @@ else:
     ###time.sleep(0.15)
     ###GPIO.output(RELAY_4, swap_it(status_local))#Control the Relay
     sys.argv = ['0','RELAY_ON']
-execfile(dir_local_mic+'mic_control.py')
+runx(dir_local_mic+'mic_control.py')
 
 do_it(status_local,file_relay) # wite the relay status in the file status_relay.txt
 print ("Status-->",status_local)
