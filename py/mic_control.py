@@ -7,6 +7,7 @@ import os
 from fun_sbr import *
 import time
 import RPi.GPIO as GPIO
+GPIO.setwarnings(False) 
 
 #exit the file if the device is not a mic device
 if(device_type=='monitor'):
