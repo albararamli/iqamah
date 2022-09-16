@@ -7,12 +7,6 @@ import json
 import requests
 import sys
 import time
-
-def execfile(filex):
-    if sys.version_info.major==2:
-        execfile(filex)
-    else:
-        exec(open(filex).read())
   
 # cd to Script Directory
 ##scriptDirectory = os.path.dirname(os.path.realpath(sys.argv[0]))
