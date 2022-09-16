@@ -11,19 +11,6 @@ import RPi.GPIO as GPIO
 #exit the file if the device is not a mic device
 if(device_type=='monitor'):
     sys.exit()
-    
-RELAY_1=12
-RELAY_2=16#Amp
-RELAY_3=18#Mixer
-RELAY_4=22#Wireless mic
-RELAY_5=32
-RELAY_6=36
-RELAY_7=38
-RELAY_8=40#External Speaker
-
-LED_RED=33
-LED_BLUE=29
-LED_GREEN=35
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(LED_BLUE, GPIO.OUT)#blue led
