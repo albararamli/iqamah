@@ -1,6 +1,12 @@
 import os
 import sys
 
+def execfile(filex):
+    if sys.version_info.major==2:
+        execfile(filex)
+    else:
+        exec(open(filex).read())
+        
 def os_system(command):
     try:
         #os.system("set +e")
