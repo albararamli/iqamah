@@ -1,6 +1,8 @@
 import os
 from fun_sbr import *
 import RPi.GPIO as GPIO
+GPIO.setwarnings(False) 
+
 import time
 import sys
 
@@ -18,17 +20,13 @@ file_relay=path_data+'mic_status_relay.txt'
 
 GPIO.setmode(GPIO.BOARD)
 
-TRIG=15
-ECHO=13
-LED=11
-
 print("Progress")
 
 GPIO.setup(LED,GPIO.OUT)
-GPIO.setup(TRIG,GPIO.OUT)
-GPIO.setup(ECHO,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(HCSR04_1_TRIG,GPIO.OUT)
+GPIO.setup(HCSR04_1_ECHO,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-GPIO.output(TRIG,False)
+GPIO.output(HCSR04_1_TRIG,False)
 
 print("Wait for settle")
 
@@ -41,24 +39,24 @@ while 1:
 
     #status_web= # get the blue led status 0,1 from the file status_web.txt
     while get_it(file_web)==0:
-        GPIO.output(LED,0)
+        GPIO.output(LED_WHITE,0)
         #time.sleep(0.5)
 
     status_web= get_it(file_web)
     print("WEB==> ",status_web)
-    GPIO.output(TRIG,True)
+    GPIO.output(HCSR04_1_TRIG,True)
     time.sleep(0.00001)
-    GPIO.output(TRIG,False)
+    GPIO.output(HCSR04_1_TRIG,False)
     # print("=======================")
     i=0
-    while GPIO.input(ECHO)==0:
+    while GPIO.input(HCSR04_1_ECHO)==0:
         pulse_start=time.time()
         #print("ECHO Sender",i)
         i=i+1
         if(i>3000):
             break
     j=0
-    while GPIO.input(ECHO)==1:
+    while GPIO.input(HCSR04_1_ECHO)==1:
         pulse_end=time.time()
         #print("ECHO Receiver",j
         j=j+1
@@ -84,65 +82,65 @@ while 1:
                 #status_web=get_it(file_web) # get the blue led status 0,1 from the file status_web.txt
                 if(status_web==1):
                     sys.argv = ['0','RELAY_ON']
-                    execfile(dir_local_mic+'mic_control.py')
-                    if(GPIO.input(LED)==0):
-                        GPIO.output(LED,True)
+                    runx(dir_local_mic+'mic_control.py')
+                    if(GPIO.input(LED_WHITE)==0):
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                         time.sleep(0.15)
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         time.sleep(0.15)
-                        GPIO.output(LED,True)
+                        GPIO.output(LED_WHITE,True)
                     #time.sleep(1)
 
         else:
@@ -155,9 +153,9 @@ while 1:
                 if(n<=-150):
                     #status_web=get_it(file_web) # get the blue led status 0,1 from the file status_web.txt
                     if(status_web==1):
-                        GPIO.output(LED,False)
+                        GPIO.output(LED_WHITE,False)
                         #time.sleep(0.25)
                         sys.argv = ['0','RELAY_OFF']
-                        execfile(dir_local_mic+'mic_control.py')
+                        runx(dir_local_mic+'mic_control.py')
                     n=-1 
 #GPIO.cleanup()
