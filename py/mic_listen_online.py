@@ -6,6 +6,12 @@ import requests
 import sys
 import time
 
+def execfile(filex):
+    if sys.version_info.major==2:
+        execfile(filex)
+    else:
+        exec(open(filex).read())
+  
 # cd to Script Directory
 ##scriptDirectory = os.path.dirname(os.path.realpath(sys.argv[0]))
 ##os.chdir(scriptDirectory)
@@ -67,14 +73,14 @@ while True:
                     sys.argv = ['0','RELAY_ON']
             else:
                 sys.argv = ['0','RELAY_OFF']
-            execfile(dir_local_mic+'mic_control.py')
+            runx(dir_local_mic+'mic_control.py')
     ####################
         if(title=="WEB" and device_type!='monitor'  ):
             if(status=="ON"):
                 sys.argv = ['0','WEB_ON']
             else:
                 sys.argv = ['0','WEB_OFF']
-            execfile(dir_local_mic+'mic_control.py')
+            runx(dir_local_mic+'mic_control.py')
     ####################
         if(title=="PI"):
             if(status=="REBOOT"):
