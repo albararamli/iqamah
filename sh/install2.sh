@@ -52,6 +52,7 @@ echo "@pcmanfm --desktop --profile LXDE-pi" >> $AUTO_FILE
 echo "@xscreensaver -no-splash" >> $AUTO_FILE
 echo "@point-rpi" >> $AUTO_FILE
 echo "@xrandr --output HDMI-1 --auto --rotate right" >> $AUTO_FILE
+echo "@xrandr --output HDMI-2 --auto --rotate right" >> $AUTO_FILE
 echo "xhost +" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"MouseMove.sh" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"screen_on.sh" >> $AUTO_FILE
