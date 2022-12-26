@@ -17,9 +17,12 @@ vcgencmd display_power 1
 sudo echo 0 > /sys/class/backlight/rpi_backlight/bl_power # LCD 7'' turn on with 0 tag
 
 xrandr --output HDMI-1 --auto --rotate right
+xrandr --output HDMI-1 --mode 1920x1080
+
+xrandr --output HDMI-2 --auto --rotate right
+xrandr --output HDMI-2 --mode 1920x1080
 
 #if [ "$(sed '1q;d' "$CONFIG_FILE")" = 'denver' ] || [ "$(sed '1q;d' "$CONFIG_FILE")" = 'katy' ]; then
-xrandr --output HDMI-1 --mode 1920x1080
 #fi
 
 #fi
