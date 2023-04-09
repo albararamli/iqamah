@@ -5,7 +5,7 @@
 COLAB=0
 ROOTX='/home/pi/iqamah/data/'
 FILEX=ROOTX+'doorStatus.json'
-side="men"#or women
+side="men"#women
 urlx="https://albara.ramli.net/iqamah/pi/davis/door/api.php"
 import json
 from datetime import date, datetime, time, timedelta
@@ -33,8 +33,12 @@ def add_to_time(time_str,add_time):
   return time_obj
 #####################################################
 #####################################################
+def today_is():
+  return datetime.now().strftime('%A')
+#####################################################
+#####################################################
 def current_time():
-  formatted_time_str = datetime.now().time().strftime('%H:%M:%S')
+  formatted_time_str = datetime.now().strftime('%H:%M:%S')
   formatted_time = datetime.strptime(formatted_time_str, '%H:%M:%S').time()
   return formatted_time#time.fromisoformat(datetime.now().strftime('%H:%M:%S'))# Get the current time
 #####################################################
@@ -207,11 +211,18 @@ while True:
         acx=1
       #print(ST,CC,EN)
       #######
-    '''ST=add_to_time('17:07:00',0)
-    EN=add_to_time('17:08:00',0)
+    ST=add_to_time('02:30:00',0)
+    EN=add_to_time('05:30:00',0)
     if ST<=CC<=EN:
       acx=1
-    print(ST,CC,EN)'''
+    #print(ST,CC,EN)
+    ##############
+    if today_is()=="Friday":
+      ST=add_to_time('12:30:00',0)
+      EN=add_to_time('14:30:00',0)
+      if ST<=CC<=EN:
+        acx=1
+      #print(ST,CC,EN)
     ##############
     if acx==1:
       openDoor()
