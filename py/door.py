@@ -191,7 +191,7 @@ while True:
         acx=1
       #########
       ST=give_me("Asr","Athan","-30",data)
-      EN=give_me("Maghrib","Athan","-30",data)
+      EN=give_me("Asr","Iqamah","30",data)
       if ST<=CC<=EN:
         acx=1
       ##########
@@ -201,15 +201,15 @@ while True:
         acx=1
       ##########
       ST=give_me("Isha","Athan","-30",data)
-      EN=give_me("Isha","Iqamah","140",data)
+      EN=give_me("Isha","Iqamah","30",data)
       if ST<=CC<=EN:
         acx=1
       #print(ST,CC,EN)
       #######
-    ST=add_to_time('02:30:00',0)
-    EN=add_to_time('05:30:00',0)
-    if ST<=CC<=EN:
-      acx=1
+    #ST=add_to_time('02:30:00',0)
+    #EN=add_to_time('05:30:00',0)
+    #if ST<=CC<=EN:
+    #  acx=1
     #print(ST,CC,EN)
     ##############
     if today_is()=="Friday":
