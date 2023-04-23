@@ -2,7 +2,6 @@
 #===========================================================================================
 #===========================================================================================
 #===========================================================================================
-COLAB=0
 ROOTX='/home/pi/iqamah/data/'
 FILEX=ROOTX+'doorStatus.json'
 side="men"#women
@@ -19,10 +18,9 @@ import requests
 import json
 #####################################################
 #####################################################
-if COLAB==0:
-  import RPi.GPIO as GPIO
-  GPIO.setmode(GPIO.BOARD)
-  GPIO.setwarnings(False)
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
 ########
 #####################################################
 #####################################################
@@ -99,10 +97,9 @@ def get_data_json():
 red_led_pin = 16  # brown wire
 green_led_pin = 18  # white wire
 relay_pin = 22  # blue wire
-if COLAB==0:
-  GPIO.setup(red_led_pin, GPIO.OUT, initial=GPIO.LOW)  # External Red LED
-  GPIO.setup(green_led_pin, GPIO.OUT, initial=GPIO.HIGH)  # External Green LED
-  GPIO.setup(relay_pin, GPIO.OUT, initial=GPIO.HIGH)  # Relay
+GPIO.setup(red_led_pin, GPIO.OUT, initial=GPIO.LOW)  # External Red LED
+GPIO.setup(green_led_pin, GPIO.OUT, initial=GPIO.HIGH)  # External Green LED
+GPIO.setup(relay_pin, GPIO.OUT, initial=GPIO.HIGH)  # Relay
 ###########################################
 # Write JSON file
 ###########################################
@@ -128,20 +125,18 @@ def ReadDoorStatusJSON():
 ###########################################
 def openDoor():
   print("Door opend now")
-  if COLAB==0:
-    GPIO.output(relay_pin, GPIO.LOW)
-    GPIO.output(green_led_pin, GPIO.LOW)
-    GPIO.output(red_led_pin, GPIO.HIGH)
+  GPIO.output(relay_pin, GPIO.LOW)
+  GPIO.output(green_led_pin, GPIO.LOW)
+  GPIO.output(red_led_pin, GPIO.HIGH)
   writeDoorStatusJSON({'doorStatus': 'open'})
 ###########################################
 # Close Door Function
 ###########################################
 def closeDoor():
   print("Door closed now")
-  if COLAB==0:
-    GPIO.output(relay_pin, GPIO.HIGH)
-    GPIO.output(green_led_pin, GPIO.HIGH)
-    GPIO.output(red_led_pin, GPIO.LOW)
+  GPIO.output(relay_pin, GPIO.HIGH)
+  GPIO.output(green_led_pin, GPIO.HIGH)
+  GPIO.output(red_led_pin, GPIO.LOW)
   writeDoorStatusJSON({'doorStatus': 'closed'})
 ###########################################
 # OpenX Function
@@ -233,5 +228,4 @@ while True:
     ##########################################
     time.sleep(2)
   except Exception as eee:
-    print(eee)
     pass####print("error")
