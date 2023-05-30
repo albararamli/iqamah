@@ -27,7 +27,9 @@ GPIO.setwarnings(False)
 def add_to_time(time_str,add_time):
   #time_str = '09:00:00' # Time strings
   time_tmp = datetime.strptime(time_str, '%H:%M:%S').time() # Convert time string to time object
+  #print(time_str,"===========",time_tmp)
   time_obj = (datetime.combine(datetime.today(), time_tmp) + timedelta(minutes=add_time)).time()# Add 20 minutes to start_time_obj
+  #print(time_str,add_time,time_obj)
   return time_obj
 #####################################################
 #####################################################
@@ -78,7 +80,7 @@ def get_data_json():
         target+=":00"
       out=target
       if i>=8:
-        if add_to_time(target,0) < add_to_time("10:00:00",0):
+        if add_to_time(target,0) < add_to_time("12:00:00",0):
           time_12 = datetime.strptime(target+" pm", '%I:%M:%S %p')
           time_24 = time_12.strftime('%H:%M:%S')
           out=time_24
@@ -200,7 +202,7 @@ while True:
       if ST<=CC<=EN:
         acx=1
       ##########
-      ST=give_me("Isha","Athan","-30",data)
+      ST=give_me("Maghrib","Iqamah","30",data)
       EN=give_me("Isha","Iqamah","30",data)
       if ST<=CC<=EN:
         acx=1
