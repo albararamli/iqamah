@@ -228,12 +228,19 @@ while True:
         acx=1
       #print(ST,CC,EN)
     ##############
-    if today_is()=="Sunday":
-      ST=add_to_time('09:30:00',0)
-      EN=add_to_time('14:30:00',0)
+    if today_is()=="Tuesday":
+      ST=add_to_time('15:00:00',0)
+      EN=add_to_time('17:30:00',0)
       if ST<=CC<=EN:
         acx=1
       #print(ST,CC,EN)
+    ##############
+    #if today_is()=="Sunday":
+    #  ST=add_to_time('09:30:00',0)
+    #  EN=add_to_time('14:30:00',0)
+    #  if ST<=CC<=EN:
+    #    acx=1
+    #  #print(ST,CC,EN)
     ##############
     if acx==1:
       openDoor()
