@@ -79,7 +79,12 @@ def get_data_json():
       if i>=4:
         target+=":00"
       out=target
-      if i>=8:
+      if i>=8 and i<=9:# Dohr Athan, and Dohr Iqamah
+        if add_to_time(target,0) < add_to_time("06:00:00",0):
+          time_12 = datetime.strptime(target+" pm", '%I:%M:%S %p')
+          time_24 = time_12.strftime('%H:%M:%S')
+          out=time_24
+      if i>=10:# Asr Athan, and above
         if add_to_time(target,0) < add_to_time("12:00:00",0):
           time_12 = datetime.strptime(target+" pm", '%I:%M:%S %p')
           time_24 = time_12.strftime('%H:%M:%S')
@@ -144,8 +149,15 @@ def closeDoor():
 # OpenX Function
 ###########################################
 def openx(s):
-  timeout = time.time() + 10   # 5 sec from now
+  timeout = time.time() + 20   # 20 sec from now
   while True:
+    time.sleep(0.1)
+    GPIO.output(green_led_pin, GPIO.HIGH)
+    GPIO.output(red_led_pin, GPIO.LOW)
+    time.sleep(0.1)
+    GPIO.output(green_led_pin, GPIO.LOW)
+    GPIO.output(red_led_pin, GPIO.HIGH)
+    time.sleep(0.1)
     if s=="open":
       openDoor()
     elif s=="close":
@@ -189,7 +201,8 @@ while True:
       ########
       ST=give_me("Dhuhar","Athan","-30",data)
       EN=give_me("Dhuhar","Iqamah","30",data)
-      if ST<=CC<=EN:
+      #print(ST,CC,EN)
+      if ST<=CC<=EN: 
         acx=1
       #########
       ST=give_me("Asr","Athan","-30",data)
@@ -221,19 +234,21 @@ while True:
         acx=1
       #print(ST,CC,EN)
     ##############
-    if today_is()=="Friday":
+    '''if today_is()=="Friday":
       ST=add_to_time('15:00:00',0)
       EN=add_to_time('17:30:00',0)
       if ST<=CC<=EN:
         acx=1
       #print(ST,CC,EN)
+    '''
     ##############
-    if today_is()=="Tuesday":
+    '''if today_is()=="Tuesday":
       ST=add_to_time('15:00:00',0)
       EN=add_to_time('17:30:00',0)
       if ST<=CC<=EN:
         acx=1
       #print(ST,CC,EN)
+    '''
     ##############
     #if today_is()=="Sunday":
     #  ST=add_to_time('09:30:00',0)
@@ -249,6 +264,6 @@ while True:
     #######################################################
     ##########################################
     ##########################################
-    time.sleep(2)
+    time.sleep(1)
   except Exception as eee:
     pass####print("error")
