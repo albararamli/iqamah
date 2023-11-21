@@ -80,7 +80,7 @@ def get_data_json():
         target+=":00"
       out=target
       if i>=8 and i<=9:# Dohr Athan, and Dohr Iqamah
-        if add_to_time(target,0) < add_to_time("06:00:00",0):
+        if add_to_time(target,0) < add_to_time("10:00:00",0):
           time_12 = datetime.strptime(target+" pm", '%I:%M:%S %p')
           time_24 = time_12.strftime('%H:%M:%S')
           out=time_24
@@ -200,7 +200,7 @@ while True:
         acx=1
       ########
       ST=give_me("Dhuhar","Athan","-30",data)
-      EN=give_me("Dhuhar","Iqamah","30",data)
+      EN=give_me("Isha","Iqamah","30",data)
       #print(ST,CC,EN)
       if ST<=CC<=EN: 
         acx=1
