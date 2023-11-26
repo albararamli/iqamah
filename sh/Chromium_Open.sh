@@ -26,3 +26,5 @@ if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
 #echo "$(sed '4q;d' "$CONFIG_FILE")screen.php?size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}"
 chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type --check-for-update-interval=31536000 "$(sed '4q;d' "$CONFIG_FILE")screen.php?size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" #(for 3.5 screen to run as root) --user-data-dir=/home/pi
 fi
+#for door
+#chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type --check-for-update-interval=31536000 "$(sed '4q;d' "$CONFIG_FILE")pi/swipe-door.php?sidex=men&size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" #(for 3.5 screen to run as root) --user-data-dir=/home/pi
