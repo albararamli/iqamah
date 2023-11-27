@@ -12,10 +12,11 @@ CONFIG_FILE="$MY_PATH/../"config.txt
 DATA_PATH="$MY_PATH/../data/"
 
 echo "0" > "$DATA_PATH"screen_status.txt
-if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
+if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'monitor' ]; then
 vcgencmd display_power 0
 sudo echo 1 > /sys/class/backlight/rpi_backlight/bl_power # LCD 7'' turn off with 1 tag
 xrandr --output HDMI-1 --off
+xrandr --output HDMI-2 --off
 fi
 
 
