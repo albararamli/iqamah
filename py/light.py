@@ -112,8 +112,8 @@ red_led_pin = 16  # brown wire
 green_led_pin = 18  # white wire
 relay_pin = 22  # blue wire
 GPIO.setup(red_led_pin, GPIO.OUT, initial=GPIO.LOW)  # External Red LED
-GPIO.setup(green_led_pin, GPIO.OUT, initial=GPIO.HIGH)  # External Green LED
-GPIO.setup(relay_pin, GPIO.OUT, initial=GPIO.HIGH)  # Relay
+GPIO.setup(green_led_pin, GPIO.OUT, initial=GPIO.LOW)  # External Green LED
+GPIO.setup(relay_pin, GPIO.OUT, initial=GPIO.LOW)  # Relay
 ###########################################
 # Write JSON file
 ###########################################
@@ -139,18 +139,18 @@ def ReadDoorStatusJSON():
 ###########################################
 def openDoor():
   print("Door opend now")
-  GPIO.output(relay_pin, GPIO.LOW)
-  GPIO.output(green_led_pin, GPIO.LOW)
-  GPIO.output(red_led_pin, GPIO.HIGH)
+  GPIO.output(relay_pin, GPIO.HIGH)#LOW)
+  GPIO.output(green_led_pin, GPIO.HIGH)#.LOW)
+  GPIO.output(red_led_pin, GPIO.LOW)#.HIGH)
   writeDoorStatusJSON({'doorStatus': 'open'})
 ###########################################
 # Close Door Function
 ###########################################
 def closeDoor():
   print("Door closed now")
-  GPIO.output(relay_pin, GPIO.HIGH)
-  GPIO.output(green_led_pin, GPIO.HIGH)
-  GPIO.output(red_led_pin, GPIO.LOW)
+  GPIO.output(relay_pin, GPIO.LOW)#.HIGH)
+  GPIO.output(green_led_pin, GPIO.LOW)#.LOW)
+  GPIO.output(red_led_pin, GPIO.HIGH)#.LOW)
   writeDoorStatusJSON({'doorStatus': 'closed'})
 ###########################################
 # OpenX Function
@@ -159,11 +159,11 @@ def openx(s):
   timeout = time.time() + 20   # 20 sec from now
   while True:
     time.sleep(0.1)
-    GPIO.output(green_led_pin, GPIO.HIGH)
-    GPIO.output(red_led_pin, GPIO.LOW)
+    GPIO.output(green_led_pin, GPIO.LOW)#.HIGH)
+    GPIO.output(red_led_pin, GPIO.HIGH)#.LOW)
     time.sleep(0.1)
-    GPIO.output(green_led_pin, GPIO.LOW)
-    GPIO.output(red_led_pin, GPIO.HIGH)
+    GPIO.output(green_led_pin, GPIO.HIGH)#.LOW)
+    GPIO.output(red_led_pin, GPIO.LOW)#.HIGH)
     time.sleep(0.1)
     if s=="open":
       openDoor()
@@ -177,6 +177,23 @@ def openx(s):
 ###########################################
 # Main Function
 ###########################################
+def is_it_ok(ST,CC,EN):
+  r=False
+  #++++++++++++++++++++++++++++
+  if ST>EN:
+    MN1=add_to_time('23:59:59',0)
+    MN2=add_to_time('00:00:00',0)
+    if ST<=CC<=MN1 or MN2<=CC<=EN:
+      r=True
+  #++++++++++++++++++++++++++++
+  elif ST<=CC<=EN:
+    r=True
+  #++++++++++++++++++++++++++++
+  if r==True:
+    print(ST,CC,EN)
+  return r
+#############################################
+#############################################
 print("START")
 while True:
   try:
@@ -197,39 +214,47 @@ while True:
     ##########################################
     #####################################################
     CC = current_time()
+    ##CC=add_to_time('15:59:59',0)
     acx=0
     data=get_data_json()
+    ##CC=give_me("Maghrib","Athan","-1",data)
     if data!='':
-      ########
-      ST=give_me("Fajr","Athan","-30",data)
-      EN=give_me("Sunrise","Iqamah","30",data)
-      if ST<=CC<=EN:
+      ##########
+      ST=give_me("Maghrib","Athan","0",data)
+      EN=give_me("Sunrise","Athan","0",data)
+      if(is_it_ok(ST,CC,EN)):
         acx=1
+      else:
+        print(CC," ====> ",ST,EN)
+      ########
       '''
       ########
-      ST=give_me("Dhuhar","Athan","-30",data)
-      EN=give_me("Isha","Iqamah","30",data)
-      #print(ST,CC,EN)
-      if ST<=CC<=EN: 
+      ST=give_me("Fajr","Athan","0",data)
+      EN=give_me("Sunrise","Iqamah","30",data)
+      if(is_it_ok(ST,CC,EN)):
+        acx=1
+      ########
+      ST=give_me("Dhuhar","Athan","0",data)
+      EN=give_me("Dhuhar","Iqamah","30",data)
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       #########
-      ST=give_me("Asr","Athan","-30",data)
+      ST=give_me("Asr","Athan","0",data)
       EN=give_me("Asr","Iqamah","30",data)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       ##########
-      ST=give_me("Maghrib","Athan","-30",data)
+      ST=give_me("Maghrib","Athan","0",data)
       EN=give_me("Maghrib","Iqamah","30",data)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       ##########
-      ST=give_me("Maghrib","Iqamah","30",data)
-      EN=give_me("Isha","Iqamah","30",data)
-      if ST<=CC<=EN:
+      ST=give_me("Isha","Athan","0",data)
+      EN=give_me("Isha","Iqamah","300",data)
+      if(is_it_ok(ST,CC,EN)):
         acx=1
-      #print(ST,CC,EN)
+      ##########
       '''
-      #######
     #ST=add_to_time('02:30:00',0)
     #EN=add_to_time('05:30:00',0)
     #if ST<=CC<=EN:
