@@ -31,6 +31,6 @@ if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'door' ]; then
 chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type --check-for-update-interval=31536000 "$(sed '4q;d' "$CONFIG_FILE")pi/swipe-door.php?sidex=men&size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" #(for 3.5 screen to run as root) --user-data-dir=/home/pi
 fi
 #for ligh
-if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'door' ]; then
+if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'light' ]; then
 chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type --check-for-update-interval=31536000 "$(sed '4q;d' "$CONFIG_FILE")pi/index.php?sidex=men&size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" #(for 3.5 screen to run as root) --user-data-dir=/home/pi
 fi
