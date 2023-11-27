@@ -7,7 +7,7 @@ dir_local=path_sh
 dir_local_mic=path_py
 
 #exit the file if the device is not a mic device
-if(device_type=='monitor'):
+if(device_type!='mic'):
     sys.exit() 
 
 GPIO.setmode(GPIO.BOARD)
