@@ -7,7 +7,7 @@ import time
 import sys
 
 #exit the file if the device is not a mic device
-if(device_type=='monitor'):
+if(device_type!='mic'):
     sys.exit() 
         
 dir_local=path_sh
