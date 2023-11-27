@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 GPIO.setwarnings(False) 
 
 #exit the file if the device is not a mic device
-if(device_type=='monitor'):
+if(device_type!='mic'):
     sys.exit()
 
 GPIO.setmode(GPIO.BOARD)
