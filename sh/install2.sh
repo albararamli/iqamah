@@ -63,15 +63,9 @@ echo "sudo python "$PY_PATH"mic_ini.py" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"mic_listen_online.py" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"internet.py" >> $AUTO_FILE # in my 7 inch last time works only when there is no sudo here
 #echo "sudo python "$PY_PATH"sensor.py" >> $AUTO_FILE
-if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'mic' ]; then
 echo "sudo python "$PY_PATH"tf-mini_plus-new.py" >> $AUTO_FILE
-fi
 echo "sudo sh "$SH_PATH"Chromium_Open.sh" >> $AUTO_FILE  # in the 3.5 and 7 screen remove "sudo" cuz chrome requires that
-if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'door' ]; then
 echo "python "$PY_PATH"door.py" >> $AUTO_FILE
-fi
-if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'light' ]; then
 echo "python "$PY_PATH"light.py" >> $AUTO_FILE
-fi
 #echo "python "$PY_PATH"door.py" >> $AUTO_FILE
 
