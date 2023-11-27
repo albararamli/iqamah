@@ -32,5 +32,5 @@ chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -
 fi
 #for ligh
 if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'light' ]; then
-chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type --check-for-update-interval=31536000 "$(sed '4q;d' "$CONFIG_FILE")pi/index.php?sidex=$(sed '2q;d' "$CONFIG_FILE")&size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" #(for 3.5 screen to run as root) --user-data-dir=/home/pi
+chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type --check-for-update-interval=31536000 "$(sed '4q;d' "$CONFIG_FILE")screen.php?sidex=$(sed '2q;d' "$CONFIG_FILE")&size=$(sed '5q;d' "$CONFIG_FILE")&icdx=1&city=$(sed '1q;d' "$CONFIG_FILE")&mac=${MACX2}" #(for 3.5 screen to run as root) --user-data-dir=/home/pi
 fi
