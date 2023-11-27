@@ -30,7 +30,7 @@ fi
 
 echo "1" > "$DATA_PATH"chrome_status.txt
 # Open Chromium Browser Instance, if the device is not mic
-if [ "$(sed '3q;d' "$CONFIG_FILE")" != 'mic' ]; then
+if [ "$(sed '3q;d' "$CONFIG_FILE")" = 'monitor' ]; then
   chromium-browser --kiosk --disable-gpu --incognito --no-sandbox --noerrdialogs -disable-session-crashed-bubble --disable-infobars --test-type "$LOCAL_FILE" #(for 3.5 screen to run as root)--user-data-dir=/home/pi
 fi
 
