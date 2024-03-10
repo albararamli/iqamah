@@ -1,18 +1,11 @@
-import os
-from fun_sbr import *
-import sys
-
-#exit the file if the device is not a mic device
-if(device_type!='door'):
-    sys.exit() 
 #===========================================================================================
 #===========================================================================================
-#===========================================================================================
+#============================================================================================
 #===========================================================================================
 ROOTX='/home/pi/iqamah/data/'
 FILEX=ROOTX+'doorStatus.json'
 side="men"#women
-urlx="https://albara.ramli.net/iqamah/pi/davis/door/api.php"
+urlx="https://albara.ramli.net/iqamah/pi/davis/door/api2.php"
 import json
 from datetime import date, datetime, time, timedelta
 import time
@@ -153,6 +146,26 @@ def closeDoor():
   GPIO.output(red_led_pin, GPIO.LOW)
   writeDoorStatusJSON({'doorStatus': 'closed'})
 ###########################################
+# Main Function
+###########################################
+def is_it_ok(ST,CC,EN):
+  r=False
+  #++++++++++++++++++++++++++++
+  if ST>EN:
+    MN1=add_to_time('23:59:59',0)
+    MN2=add_to_time('00:00:00',0)
+    if ST<=CC<=MN1 or MN2<=CC<=EN:
+      r=True
+  #++++++++++++++++++++++++++++
+  elif ST<=CC<=EN:
+    r=True
+  #++++++++++++++++++++++++++++
+  if r==True:
+    print(ST,CC,EN)
+  return r
+#############################################
+#############################################
+###########################################
 # OpenX Function
 ###########################################
 def openx(s):
@@ -183,8 +196,10 @@ while True:
     doornow=ReadDoorStatusJSON()
     ################
     try:
+      #print(urlx+"?request=1&doornow="+doornow+"&side="+side)
       r=requests.get(urlx,params = {"request": "1","doornow": doornow, "side": side},timeout=10)
       h=r.text.strip()
+      #print("h=",h,doornow)
     except:
       h='none'
       pass
@@ -203,41 +218,41 @@ while True:
       ########
       ST=give_me("Fajr","Athan","-30",data)
       EN=give_me("Sunrise","Iqamah","30",data)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       ########
       ST=give_me("Dhuhar","Athan","-30",data)
       EN=give_me("Isha","Iqamah","30",data)
       #print(ST,CC,EN)
-      if ST<=CC<=EN: 
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       #########
       ST=give_me("Asr","Athan","-30",data)
       EN=give_me("Asr","Iqamah","30",data)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       ##########
       ST=give_me("Maghrib","Athan","-30",data)
       EN=give_me("Maghrib","Iqamah","30",data)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       ##########
       ST=give_me("Maghrib","Iqamah","30",data)
       EN=give_me("Isha","Iqamah","30",data)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       #print(ST,CC,EN)
       #######
-    #ST=add_to_time('02:30:00',0)
-    #EN=add_to_time('05:30:00',0)
-    #if ST<=CC<=EN:
-    #  acx=1
+    ST=add_to_time('17:00:00',0)
+    EN=add_to_time('23:59:00',0)
+    if(is_it_ok(ST,CC,EN)):
+      acx=1
     #print(ST,CC,EN)
     ##############
     if today_is()=="Friday":
       ST=add_to_time('12:30:00',0)
       EN=add_to_time('14:30:00',0)
-      if ST<=CC<=EN:
+      if(is_it_ok(ST,CC,EN)):
         acx=1
       #print(ST,CC,EN)
     ##############
