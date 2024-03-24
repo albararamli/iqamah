@@ -37,9 +37,13 @@ status_web= get_it(file_web)
 # Function to check switch state
 def check_switch():
     if GPIO.input(SWITCH_YELLOW) == GPIO.LOW:
-        if(status_web==1):
-            sys.argv = ['0','RELAY_OFF']
-            runx(dir_local_mic+'mic_control.py')
+        #if(status_web==1):
+        sys.argv = ['0','WEB_OFF']
+        runx(dir_local_mic+'mic_control.py')
+        time.sleep(1)
+        ###
+        sys.argv = ['0','RELAY_OFF']
+        runx(dir_local_mic+'mic_control.py')
         return "Pressed"
     else:
         return "Not Pressed"
