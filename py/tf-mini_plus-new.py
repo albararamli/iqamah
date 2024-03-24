@@ -1,3 +1,4 @@
+#Tested on RPI 4
 import os
 from fun_sbr import *
 import RPi.GPIO as GPIO
@@ -109,7 +110,7 @@ def read_data():
                                 time.sleep(0.15)'''
                             #GPIO.output(LED_GREEN,True)
                     ########################
-                elif distance<=0 or T_NEW==-1 or float(time.time()-T_NEW)>=10.0:
+                elif distance<=0 or T_NEW==-1 or float(time.time()-T_NEW)>=3000.0: #50min
                     print("OFF",distance,time.time(),T_NEW,time.time()-T_NEW)
                     ########################
                     #status_web=get_it(file_web) # get the blue led status 0,1 from the file status_web.txt
