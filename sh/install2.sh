@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 MY_PATH="`dirname \"$0\"`"              # relative
@@ -64,8 +63,6 @@ echo "sudo python "$PY_PATH"mic_listen_online.py" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"internet.py" >> $AUTO_FILE # in my 7 inch last time works only when there is no sudo here
 #echo "sudo python "$PY_PATH"sensor.py" >> $AUTO_FILE
 echo "sudo python "$PY_PATH"tf-mini_plus-new.py" >> $AUTO_FILE
-echo "sudo python "$PY_PATH"switch.py" >> $AUTO_FILE
+echo "python "$PY_PATH"light.py" >> $AUTO_FILE
 echo "sudo sh "$SH_PATH"Chromium_Open.sh" >> $AUTO_FILE  # in the 3.5 and 7 screen remove "sudo" cuz chrome requires that
 #echo "python "$PY_PATH"door.py" >> $AUTO_FILE
-#echo "python "$PY_PATH"light.py" >> $AUTO_FILE
-
