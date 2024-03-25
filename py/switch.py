@@ -27,40 +27,47 @@ GPIO.setup(LED_GREEN,GPIO.OUT)
 GPIO.setup(LED_YELLOW,GPIO.OUT)
 
 GPIO.setup(SWITCH_YELLOW, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(SWITCH_RED, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 status_web= get_it(file_web)
 
 
-
-
-
 # Function to check switch state
-def check_switch():
+def check_yellow_switch():
     if GPIO.input(SWITCH_YELLOW) == GPIO.LOW:
         #if(status_web==1):
         sys.argv = ['0','WEB_OFF']
         runx(dir_local_mic+'mic_control.py')
-        time.sleep(1)
+        time.sleep(0.1)
         ###
         sys.argv = ['0','RELAY_OFF']
         runx(dir_local_mic+'mic_control.py')
+        time.sleep(0.1)
         return "Pressed"
     else:
         return "Not Pressed"
 
-# Main function to test the switch
-def main():
-    while True:
-        state = check_switch()
-        #print("Switch state:", state)
-        # Add a small delay to avoid constant checking
+# Function to check switch state
+def check_red_switch():
+    if GPIO.input(SWITCH_RED) == GPIO.LOW:
+        #if(status_web==1):
+        sys.argv = ['0','WEB_OFF']
+        runx(dir_local_mic+'mic_control.py')
         time.sleep(0.1)
+        ###
+        sys.argv = ['0','RELAY_ON']
+        runx(dir_local_mic+'mic_control.py')
+        time.sleep(0.1)
+        return "Pressed"
+    else:
+        return "Not Pressed"
 
-# Run the main function if the script is executed directly
-if __name__ == "__main__":
+
+# Main function to test the switch
+
+while True:
     try:
-        main()
-    except KeyboardInterrupt:
-        # Clean up GPIO settings on Ctrl+C
-        GPIO.cleanup()
-
+        yellow_state = check_yellow_switch()
+        red_state = check_red_switch()
+    except:
+        pass
