@@ -15,6 +15,29 @@ sudo apt-get install chromium-browser unclutter lxde xdotool xscreensaver lxsess
 
 From xscreensaver click Settings, then at the top choose Disable Screen Sleep from the dropdown. 
 
+
+# Install [RPI 4 os]
+```
+cd ~; 
+rm -Rf iqamah;
+git clone https://github.com/albararamli/iqamah.git; 
+```
+# Costomizing the config
+```
+Update the configuration of the city and device
+```
+# Setup
+```
+cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh old; 
+```
+
+# right after the costomizing the config
+```
+cd ~/iqamah/sh/; sudo sh ./local.sh; 
+reboot;
+```
+
+
 # Install [for RP 3 the official]
 ```
 cd ~; 
@@ -26,15 +49,6 @@ cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh;
 # right after the costomizing the config
 ```
 cd ~/iqamah/sh/; sudo sh ./local.sh; 
-reboot;
-```
-
-# Install [New RPI 3 os]
-```
-cd ~; 
-rm -Rf iqamah;
-git clone https://github.com/albararamli/iqamah.git; 
-cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh old; 
 reboot;
 ```
 
