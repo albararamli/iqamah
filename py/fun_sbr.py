@@ -84,6 +84,7 @@ device_type=get_line_form_file(config_file,2) # monitor vs mic vs ''
 app_url    =get_line_form_file(config_file,3) # http://albara.ramli.net/iqamah/
 screen_size    =get_line_form_file(config_file,4) # 27 vs 7
 
+
 RELAY_1=12
 RELAY_2=16#Amp
 RELAY_3=18#Mixer
@@ -93,24 +94,15 @@ RELAY_6=36
 RELAY_7=38
 RELAY_8=40#External Speaker
 
-'''
-LED_RED=15
-LED_BLUE=33
-LED_GREEN=31
-LED_WHITE=37
-LED_YELLOW=29
-
-HCSR04_1_TRIG=13
-HCSR04_1_ECHO=35
-'''
-
-
 LED_RED=11#15
 LED_BLUE=15#33
 LED_GREEN=24#31
 LED_YELLOW=26#29
 
-LED_WHITE=33#37  ROOM AUTDIO BOX
+SWITCH_YELLOW=13#Near sensor
+SWITCH_RED=37#Near sensor
+RELAY_LIGHT=35#Near sensor
+LED_WHITE=33#Near sensor
 
 HCSR04_1_TRIG=13
 HCSR04_1_ECHO=35
