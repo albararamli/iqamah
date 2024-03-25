@@ -3,7 +3,7 @@ from fun_sbr import *
 import sys
 
 #exit the file if the device is not a mic device
-if(device_type!='light'):
+if(device_type!='mic'):
     sys.exit() 
 #===========================================================================================
 #===========================================================================================
@@ -108,12 +108,9 @@ def get_data_json():
 ###########################################
 # Initialize GPIO
 ###########################################
-red_led_pin = 16  # brown wire
-green_led_pin = 18  # white wire
-relay_pin = 22  # blue wire
-GPIO.setup(red_led_pin, GPIO.OUT, initial=GPIO.LOW)  # External Red LED
-GPIO.setup(green_led_pin, GPIO.OUT, initial=GPIO.LOW)  # External Green LED
-GPIO.setup(relay_pin, GPIO.OUT, initial=GPIO.LOW)  # Relay
+#GPIO.setup(LED_ORANGE, GPIO.OUT, initial=GPIO.LOW)  # External Red LED
+GPIO.setup(LED_WHITE, GPIO.OUT, initial=GPIO.LOW)  # External Green LED
+GPIO.setup(RELAY_LIGHT, GPIO.OUT, initial=GPIO.LOW)  # Relay
 ###########################################
 # Write JSON file
 ###########################################
@@ -139,18 +136,18 @@ def ReadDoorStatusJSON():
 ###########################################
 def openDoor():
   print("Door opend now")
-  GPIO.output(relay_pin, GPIO.HIGH)#LOW)
-  GPIO.output(green_led_pin, GPIO.HIGH)#.LOW)
-  GPIO.output(red_led_pin, GPIO.LOW)#.HIGH)
+  GPIO.output(RELAY_LIGHT, GPIO.HIGH)#LOW)
+  GPIO.output(LED_WHITE, GPIO.HIGH)#.LOW)
+  #GPIO.output(LED_ORANGE, GPIO.LOW)#.HIGH)
   writeDoorStatusJSON({'doorStatus': 'open'})
 ###########################################
 # Close Door Function
 ###########################################
 def closeDoor():
   print("Door closed now")
-  GPIO.output(relay_pin, GPIO.LOW)#.HIGH)
-  GPIO.output(green_led_pin, GPIO.LOW)#.LOW)
-  GPIO.output(red_led_pin, GPIO.HIGH)#.LOW)
+  GPIO.output(RELAY_LIGHT, GPIO.LOW)#.HIGH)
+  GPIO.output(LED_WHITE, GPIO.LOW)#.LOW)
+  #GPIO.output(LED_ORANGE, GPIO.HIGH)#.LOW)
   writeDoorStatusJSON({'doorStatus': 'closed'})
 ###########################################
 # OpenX Function
@@ -159,11 +156,11 @@ def openx(s):
   timeout = time.time() + 20   # 20 sec from now
   while True:
     time.sleep(0.1)
-    GPIO.output(green_led_pin, GPIO.LOW)#.HIGH)
-    GPIO.output(red_led_pin, GPIO.HIGH)#.LOW)
+    GPIO.output(LED_WHITE, GPIO.LOW)#.HIGH)
+    #GPIO.output(LED_ORANGE, GPIO.HIGH)#.LOW)
     time.sleep(0.1)
-    GPIO.output(green_led_pin, GPIO.HIGH)#.LOW)
-    GPIO.output(red_led_pin, GPIO.LOW)#.HIGH)
+    GPIO.output(LED_WHITE, GPIO.HIGH)#.LOW)
+    #GPIO.output(LED_ORANGE, GPIO.LOW)#.HIGH)
     time.sleep(0.1)
     if s=="open":
       openDoor()
