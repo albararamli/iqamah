@@ -31,12 +31,13 @@ Update the configuration of the city and device
 cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh old; 
 ```
 
-# right after the costomizing the config
+# Then
 ```
 cd ~/iqamah/sh/; sudo sh ./local.sh; 
 reboot;
 ```
 
+# Others
 
 # Install [for RP 3 the official]
 ```
