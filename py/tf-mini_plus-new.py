@@ -1,4 +1,3 @@
-#Tested on RPI 4
 import os
 from fun_sbr import *
 import RPi.GPIO as GPIO
@@ -110,7 +109,7 @@ def read_data():
                                 time.sleep(0.15)'''
                             #GPIO.output(LED_GREEN,True)
                     ########################
-                elif distance<=0 or T_NEW==-1 or float(time.time()-T_NEW)>=3000.0: #50min
+                elif float(time.time()-T_NEW)>=1200.0:#20min
                     print("OFF",distance,time.time(),T_NEW,time.time()-T_NEW)
                     ########################
                     #status_web=get_it(file_web) # get the blue led status 0,1 from the file status_web.txt
@@ -136,11 +135,12 @@ def read_data():
                 ser.open()
                 
 if __name__ == "__main__":
-    try:
-        if ser.isOpen() == False:
-            ser.open()
-        read_data()
-    except KeyboardInterrupt(): # ctrl + c in terminal.
-        if ser != None:
-            ser.close()
-            print("program interrupted by the user")
+    while True:
+        try:
+            if ser.isOpen() == False:
+                ser.open()
+            read_data()
+        except:
+            if ser != None:
+                ser.close()
+                print("program interrupted by the user")
