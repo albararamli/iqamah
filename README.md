@@ -19,7 +19,7 @@ From xscreensaver click Settings, then at the top choose Disable Screen Sleep fr
 # Install [RPI 4 os]
 ```
 cd ~; 
-rm -Rf iqamah;
+sudo rm -Rf iqamah;
 git clone https://github.com/albararamli/iqamah.git; 
 ```
 # Costomizing the config
