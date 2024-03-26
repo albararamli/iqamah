@@ -28,7 +28,7 @@ Update the configuration of the city and device
 ```
 # Setup
 ```
-cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh old; 
+cd ~/iqamah/sh/; sudo sh ./install.sh; sudo sh ./install2.sh;
 ```
 
 # Then
